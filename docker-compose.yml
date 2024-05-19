@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  postgresql:
+    # image: postgres:11.7
+    container_name: postgresql
+    build: ./docker/postgresql
+    environment:
+      TZ: 'Asia/Tokyo'
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      # PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+      - "5433:5433"
+      - "5434:5434"
+    volumes:
+      - ./docker/postgresql/init:/docker-entrypoint-initdb.d
+      - ./src:/src
+    # restart: always
