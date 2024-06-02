@@ -1,4 +1,6 @@
--- docker-compose  exec -it postgresql  psql -U docker -f src/postgresql/function/ch0808.sql -d docker
+-- indexの操作
+--
+-- docker-compose  exec -it postgresql  psql -U docker -f src/postgresql/function/ch0808_index.sql -d docker
 DROP TABLE IF EXISTS tbl CASCADE;
 CREATE TABLE tbl(c1 int,c2 text[],c3 point);
 CREATE INDEX tbl_c1_idx ON tbl (c1);
