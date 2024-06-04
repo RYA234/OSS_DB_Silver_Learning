@@ -1,4 +1,5 @@
--- docker-compose  exec -it postgresql  psql -U tx2 -f src/postgresql/transaction/ch103phantomRead/tx2.sql -d docker
+-- Phantom Readをが再現する ターミナル２で実行する
+-- docker-compose  exec -it postgresql  psql -U tx2 -f src/postgresql/transaction/ch103phantomRead/OK/tx2.sql -d docker
 
 SELECT pg_sleep(2); -- tx1.sql のトランザクション開始を待つ
 BEGIN;

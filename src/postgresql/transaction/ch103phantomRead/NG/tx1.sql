@@ -1,4 +1,5 @@
--- docker-compose  exec -it postgresql  psql -U docker -f src/postgresql/transaction/ch103phantomRead/tx1.sql -d docker
+-- Phantom Readが発生しない ターミナル１で実行する
+-- docker-compose  exec -it postgresql  psql -U docker -f src/postgresql/transaction/ch103phantomRead/NG/tx1.sql -d docker
 DROP TABLE IF EXISTS tbl CASCADE;
 CREATE TABLE tbl(id int,value int);
 GRANT ALL ON tbl TO tx2;
@@ -6,7 +7,7 @@ INSERT INTO tbl VALUES(1,5),(2,8);
 SELECT * FROM tbl;
 
 BEGIN;
-SET TRANSACTION ISOLATION LEVEL  READ COMMITTED ;
+SET TRANSACTION ISOLATION LEVEL  SERIALIZABLE;
 SHOW transaction_isolation;
 
 SELECT pg_sleep(4);   -- tx2.sql の最初のSELECTを待つ
